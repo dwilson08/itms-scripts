@@ -101,7 +101,7 @@ The given filenames cannot be changed as of now, they are as follows:
 
 | Column | Description|
 | --- | --- |
-| id | A unique alphanumeric ID that will be used for reporting |
+| id | A unique alphanumeric ID |
 | reference name | The reference name will be used on iTunes Connect and in Sales and Trends reports. It won't be displayed on the App Store. |
 | type | consumable, non-consumable, subscription, or auto-renewable. Can’t be changed later. |
 | cleared for sale | Boolean. Set to true if you want it to be available immediately. |
@@ -109,6 +109,14 @@ The given filenames cannot be changed as of now, they are as follows:
 | image name | File name including extension but not path (e.g. iap-coins1.png) |
 
 `iap/iap_locales.csv` - Provides the title and description for each in-app purchase for each locale.
+
+| Column | Description|
+| --- | --- |
+| id | In-app purchase ID that matches an existing item or one from the metadata csv |
+| locale name |[RFC 5646 Language Code](https://help.apple.com/itc/appsspec/en.lproj/static.html#itce40fff472) |
+| title | Localized name of the in-app purchase that will be displayed on the App Store. |
+| description | Localized description of the in-app product |
+
 
 `achievements/achievements_metadata.csv` - Provides the id, reference name, points, and hidden for each achievement.
 
