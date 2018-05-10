@@ -62,7 +62,7 @@ Use the following convention to name your app store images that you want to uplo
 
 For example:
 
-If your `app_store_image_base_names` is something like `["3.5", "4", "4.7", "5.5", "iPad", "iPadPro"]`,
+If your `app_store_image_base_names` is something like `["3.5", "4", "4.7", "5.5", "iPhoneX", iPad", "iPadPro"]`,
 your first slot images for the German language should be named:
 
 ```
@@ -70,6 +70,7 @@ de-DE_3.5_00.png
 de-DE_4_00.png
 de-DE_4.7_00.png
 de-DE_5.5_00.png
+de-DE_iPhoneX_00.png
 de-DE_iPad_00.png
 de-DE_iPadPro_00.png
 ```
@@ -82,23 +83,72 @@ The way we provide the information to be uploaded comes in the form of `.csv` an
 There are some stubbed examples in the subdirectories for each category we can provide information for.
 The given filenames cannot be changed as of now, they are as follows:
 
-`app_store/app_store_locales.tsv` - Provides the App title, keywords, software url, privacy url, and support url.
+`app_store/app_store_locales.tsv` - Provides the App title, subtitle, keywords, software url, privacy url, and support url.
+
+| Column | Description|
+| --- | --- |
+| locale name|[RFC 5646 Language Code](https://help.apple.com/itc/appsspec/en.lproj/static.html#itce40fff472) |
+| title | Localized title of the game |
+| subtitle | Localized subtitle of the game. New in iOS 11 |
+| keywords | List of localized keywords separated by commas |
+| software url | A URL with marketing information about your app. |
+| privacy url | URL for your app's privacy policy. |
+| support url | URL for support information. |
 
 `app_store/de-DE/app_store_description.txt` - Provides the App Store description in the given locale (de-DE in this case.)
 
 `iap/iap_metadata.csv` - Provides the id, reference name, type, cleared for sale, price tier, and image name for each in-app purchase.
 
+| Column | Description|
+| --- | --- |
+| id | A unique alphanumeric ID that will be used for reporting |
+| reference name | The reference name will be used on iTunes Connect and in Sales and Trends reports. It won't be displayed on the App Store. |
+| type | consumable, non-consumable, subscription, or auto-renewable. Can’t be changed later. |
+| cleared for sale | Boolean. Set to true if you want it to be available immediately. |
+| price tier | See Apple's price tiers for more information. |
+| image name | File name including extension but not path (e.g. iap-coins1.png) |
+
 `iap/iap_locales.csv` - Provides the title and description for each in-app purchase for each locale.
 
 `achievements/achievements_metadata.csv` - Provides the id, reference name, points, and hidden for each achievement.
 
+| Column | Description|
+| --- | --- |
+| id | A unique alphanumeric identifier that you create for this achievement. |
+| reference name | An internal name that you must provide for each achievement. It is the name you should use if you search for the achievement within iTunes Connect. |
+| points | Integer. Amount of points your achievement is worth. There is a maximum of 100 points per achievement and 1000 points for all achievements combined. |
+| hidden | Boolean.  Achievements marked as Hidden will remain hidden on Game Center until a player has achieved them. |
+
+
 `achievements/achievements_locales.csv` - Provides the title, before description, after description, and image name for each achievement for each locale.
+
+| Column | Description|
+| --- | --- |
+| id |Achivement id that matches one from the metadata csv |
+| locale name |[RFC 5646 Language Code](https://help.apple.com/itc/appsspec/en.lproj/static.html#itce40fff472) |
+| description before|Localized string describing achievement before it’s unlocked. (e.g. “Unlock 5 characters”) |
+| description after | Localized string describing achievement after it's been unlocked, past tense ideally. (e.g. “Unlocked 5 characters”) |
+| image name | File name including extension but not path (e.g. "ach-coins1.png") |
 
 `achievements/*.png` - The images defined in achievements_locales are stored in the achievements folder and need to have a resolution of 512x512 or 1024x1024.
 
 `leaderboards/leaderboards_metadata.csv` - Provides the id, reference name, and sort order for each leaderboard.
 
+| Column | Description|
+| --- | --- |
+| id | A unique alphanumeric identifier that you create for this leaderboard |
+| reference name |An internal friendly name that you must provide for each leaderboard. It is the name you should use if you search for the leaderboard within iTunes Connect. |
+| sort ascending |Boolean. Setting the value to true sorts the scores on the leaderboard from low to high; the lowest scores will be displayed first. |
+
 `leaderboards/leaderboards_locales.csv` - Provides the title, formatter type, and image name for each leaderboard for each locale.
+
+| Column | Description|
+| --- | --- |
+| id | Leaderboard ID. Must match an existing leaderboard from the metadata csv |
+| locale name |[RFC 5646 Language Code](https://help.apple.com/itc/appsspec/en.lproj/static.html#itce40fff472) |
+| title | Localized title of the leaderboard |
+| format | Localized score format. See [Apple's Metadata Specification](https://help.apple.com/itc/appsspec/en.lproj/smatic.html#itcaeaead256) for list of Supported Formats for Score Format Type  | 
+| image name | File name including extension but not path (e.g. "leaderboard-coins1.png") |
 
 `leaderboards/*.png` - The images defined in leaderboards_locales are stored in the leaderboards folder and need to have a resolution of 512x512 or 1024x1024.
 
@@ -140,5 +190,5 @@ This project adheres to the [Open Code of Conduct][code-of-conduct]. By particip
 2. Create a branch (`git checkout -b my_branch`)
 3. Commit your changes (`git commit -am "Made xyz a lot better"`)
 4. Push to the branch (`git push origin my_branch`)
-5. Open a [Pull Request](http://github.com/github/markup/pulls)
+5. Open a [Pull Request](https://github.com/RareSloth/itms-scripts/pulls)
 6. Go play King Rabbit while you wait :)
