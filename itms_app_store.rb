@@ -22,7 +22,7 @@ class ITMSAppStore
   def self.software_screenshots(locale_name)
     screenshots_xml = ''
 
-    display_targets = ['iOS-3.5-in', 'iOS-4-in', 'iOS-4.7-in', 'iOS-5.5-in', 'iOS-iPad', 'iOS-iPad-Pro']
+    display_targets = ['iOS-3.5-in', 'iOS-4-in', 'iOS-4.7-in', 'iOS-5.5-in', 'iOS-5.8-in', 'iOS-iPad', 'iOS-iPad-Pro']
 
     display_targets.each_with_index do |display_target, display_target_index|
       5.times do |i|
