@@ -155,7 +155,7 @@ The given filenames cannot be changed as of now, they are as follows:
 | id | Leaderboard ID. Must match an existing leaderboard from the metadata csv |
 | locale name |[RFC 5646 Language Code](https://help.apple.com/itc/appsspec/en.lproj/static.html#itce40fff472) |
 | title | Localized title of the leaderboard |
-| format | Localized score format. See [Apple's Metadata Specification](https://help.apple.com/itc/appsspec/en.lproj/smatic.html#itcaeaead256) for list of Supported Formats for Score Format Type  | 
+| format | Localized score format. See [Apple's Metadata Specification](https://help.apple.com/itc/appsspec/en.lproj/static.html#itcaeaead256) for list of Supported Formats for Score Format Type  | 
 | image name | File name including extension but not path (e.g. "leaderboard-coins1.png") |
 
 `leaderboards/*.png` - The images defined in leaderboards_locales are stored in the leaderboards folder and need to have a resolution of 512x512 or 1024x1024.
